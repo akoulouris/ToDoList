@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="jumbotron" style="padding:45px 0px">
+          <h4 class="text-center">To Do List App</h4>
+      </div>
+      <div class="input-group">
+        <input #itemTitle type="text" class="form-control" >
+        <div class="input-group-addon hover-cursor" (click)="Addtitle(itemTitle.value)">
+        <i class="fa fa-plus-circle fa-2x"></i>
+         </div>
+         <div>
+         <button class="btn btn-danger" (click)="removeAll()"> delete all</button>
+        </div>
+      </div>
+      <div style="margin :5x 0px">
+        <ul class="list-group">
+           <li class="list-group-item"  *ngFor="let list of lists">
+             <span class="hover-cursor" [class.text-success]="list.isChecked" (click)="checkOrUncheckTitle(list.$key,list.isChecked)">
+               <i class="fa fa-lg" [ngClass]="list.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+             </span>
+             {{list.Title}}
+              <!-- {{list.Title}} -->
+              <span class="hover-cursor text-danger pull-right" (click)="removeTitle(list.$key)">
+                  <i class="fa fa-trash-o fa-lg"></i>
+                </span>
+            </li>
+        </ul>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <li  *ngFor="let list of lists">
+    <p>
+      {{list.Title}}
+    </p>
+  </li> -->
